@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nilai Akhir Mahasiswa</title>
+    <!-- <link rel="stylesheet" href="../css/bootstrap.css"> -->
+</head>
+<body>
+    <form action="" name="form">
+        <h2>Nilai Akhir Mahasiswa</h2>
+        <!-- inputan -->
+        <label for="">Nilai Quiz :</label>
+        <input type="number" name="quiz"><br>
+        <label for="">Nilai Tugas :</label>
+        <input type="number" name="tugas"><br>
+        <label for="">Nilai UTS :</label>
+        <input type="number" name="uts"><br>
+        <label for="">Nilai UAS :</label>
+        <input type="number" name="uas">
+
+
+        <hr>
+
+        <!-- form hasil -->
+        <label for="">Grade :</label>
+        <input type="text" name="hasilIp" disabled><br>
+        <label for="">Keterangan :</label>
+        <input type="text" name="Keterangan" disabled>
+
+        <!-- tombol aksi -->
+
+        <button class="btn btn-success" value="Hitung" onclick="hitungNilai()">Hitung</button>
+        <button class="btn btn-primary">Reset</button>
+
+
+    </form>
+
+
+
+    <!-- <script src="../js/bootstrap.js"></script> -->
+    <script>
+        function hitungNilai() {
+            // nilai
+            var quiz=parseFloat(document.form.quiz.value);
+            var tugas=parseFloat(document.form.tugas.value);
+            var uts=parseFloat(document.form.uts.value);
+            var uas=parseFloat(document.form.uas.value);
+
+            // tampilan
+            var ip=""
+            var keterangan=""
+
+            // nilai akhir
+            var nilai_akhir=((0.10*quiz)+(0.20*tugas)+(0.30*uts)+(0.40*uas));
+
+            if(nilai_akhir>=85){
+                // 
+                ip="grade A";
+                ket="Nilai Sangat Memuaskan";
+            }else if(nilai_akhir>=73){
+                ip="grade B";
+                ket="Nilai Sangat Baik";
+            }else if(nilai_akhir>=65){
+                ip="grade C";
+                ket="Nilai Cukup Baik";
+            }else if(nilai_akhir>=50){
+                ip="grade D";
+                ket="Anda Kurang Beruntung, Coba Lagi";
+            }else{
+                ip="grade E";
+                Ket="Anda Sangat Tidak Beruntung, Coba Lagi";
+            }
+        }
+
+        alert(ip+""+ket)
+
+        // document.form.hasilIp.value=ip;
+        // document.form.keterangan.value=ip;
+    </script>
+</body>
